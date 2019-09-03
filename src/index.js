@@ -1,12 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { Component } from "./kreact";
+import ReactDOM from './kreact-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function Comp(props) {
+    return (
+    <div>
+        <h2>函数组件，{props.name}</h2>
+        {props.children}
+    </div>
+    );
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+class Comp2 extends Component {
+    render() {
+        return <h2>class组件</h2>;
+    }
+}
+
+const jsx = (
+    <div id="demo">
+        <span>hi</span>
+        <Comp name="kaikeba">
+            <h3>开课吧</h3>
+        </Comp>
+        <Comp2 />
+    </div>
+);
+
+
+console.log(jsx);
+
+
+ReactDOM.render(jsx, document.querySelector("#root"));
